@@ -7,5 +7,5 @@ ReactDOM.render(
   <IntlProvider locale={navigator.language}>
     <App />
   </IntlProvider>,
-  document.getElementById('mainContainer'),
+  document.getElementById('mainContainer')
 );

@@ -1,10 +1,10 @@
 import React from 'react';
-import myimage from '../assets/12.jpg';
+import myimage from '../assets/12.jpg'
 
-const App = () =>   (
+const App = () => (
   <div>
     This is first componnent
-    <img src={`${myimage}`} alt="myimage not loaded" />
+    <img src={`${myimage}`} alt='myimage not loaded' />
   </div>
 );
 
