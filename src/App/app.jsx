@@ -1,5 +1,5 @@
 import React from 'react';
-import myimage from '../assets/12.jpg'
+import myimage from '../assets/12.jpg';
 
 const App = () => (
   <div>
