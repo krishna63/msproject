@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackplugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -17,11 +18,20 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /.(sass|css)$/,
+				test: /.(sa|c|pc)ss$/,
 				exclude: /"node_modules"/,
 				use: [
-					{loader: 'style-loader'},
-					{loader: 'css-loader'},
+					{loader: MiniCssExtractPlugin.loader},
+					/**
+					 * when used below loader in combination with above loader
+					 * then it is throwing error so only commented it.
+					 * When we use style loader it will inject the styles into the style
+					 * tag of the page, whereas the above plugin will create a separate
+					 * files for each component hence above is preferred over below loader
+					 */
+					//{loader: 'style-loader'},
+					{ loader: 'css-loader'},
+					{loader: 'postcss-loader'},
 					{loader: 'sass-loader'}
 				]
 			},
@@ -45,7 +55,12 @@ module.exports = {
 		new HtmlWebpackplugin({
 			template: 'index.html',
       title: 'carousel demo'
-		})
+		}),
+		new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: '[name].css'
+    })
 	],
   resolve: {
     extensions: ['.js', '.jsx']
